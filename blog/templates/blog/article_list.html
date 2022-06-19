@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Blog List</title>
+</head>
+<body>
+
+    {% for i in articles %}
+        <article>
+            <h1>{{ i.title }}</h1>
+            <h3 class="text-primary">Author: {{ i.author }}</h3>
+            <h5 class="text-warning">Created at: {{ i.created }}</h5>
+            <h5 class="text-warning">Published at: {{ i.publish }}</h5>
+            <h5 class="text-warning">Updated at: {{ i.update }}</h5>
+            <h6 class="text-primary">Content of this article: </h6>
+            <p>{{ i.content }}</p>
+            <hr>
+            <br>
+        </article>
+    {% endfor %}
+
+</body>
+</html>
