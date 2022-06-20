@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ object.title }} Detail {% endblock %}
+
+{% block content %}
+
+    <article>
+        <h1 class="text-center">{{ object.title }}</h1>
+        <h4 class="text-primary">
+            Author: <span class="text-black">{{ object.author }}</span>
+        </h4>
+        <h5 class="text-primary small">
+            Created at: <span class="text-black">{{ object.created }}</span>
+        </h5>
+
+        <h5 class="text-primary small">
+            Published at: <span class="text-black">{{ object.publish }}</span>
+        </h5>
+
+        <h5 class="text-primary small">
+            Updated at: <span class="text-black">{{ object.updated }}</span>
+        </h5>
+        <hr>
+        <br>
+
+        <h6 class="text-primary">Content of this article: </h6>
+        <p>{{ object.content }}</p>
+        <br>
+    </article>
+
+{% endblock %}

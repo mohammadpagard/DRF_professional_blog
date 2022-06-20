@@ -1,26 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <title>Blog List</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %} Articles List {% endblock %}
+
+{% block content %}
 
     {% for i in articles %}
         <article>
-            <h1>{{ i.title }}</h1>
-            <h3 class="text-primary">Author: {{ i.author }}</h3>
-            <h5 class="text-warning">Created at: {{ i.created }}</h5>
-            <h5 class="text-warning">Published at: {{ i.publish }}</h5>
-            <h5 class="text-warning">Updated at: {{ i.update }}</h5>
-            <h6 class="text-primary">Content of this article: </h6>
-            <p>{{ i.content }}</p>
+            <h1 class="text-info text-center">
+                <a class="text-decoration-none" href="{% url 'blog:detail' i.slug %}">{{ i.title }}</a>
+            </h1>
+            <h4 class="text-primary">
+                Author: <span class="text-black">{{ i.author }}</span>
+            </h4>
+            <h5 class="text-primary small">
+                Created at: <span class="text-black">{{ i.created }}</span>
+            </h5>
+
+            <h5 class="text-primary small">
+                Published at: <span class="text-black">{{ i.publish }}</span>
+            </h5>
+
+            <h5 class="text-primary small">
+                Updated at: <span class="text-black">{{ i.updated }}</span>
+            </h5>
+{#            <h6 class="text-primary">Content of this article: </h6>#}
+            <p>{{ i.content|truncatewords:20 }}</p>
             <hr>
             <br>
         </article>
     {% endfor %}
+    <p class="text-danger">For more content and information of this article, please click on the title of this article that got to details...</p>
 
-</body>
-</html>
+{% endblock %}
