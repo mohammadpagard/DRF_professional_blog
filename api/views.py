@@ -11,10 +11,10 @@ class ArticleViewSet(ModelViewSet):
     serializer_class = serializers.ArticleSerializer
 
     def get_permissions(self):
-        if self.action == 'list':
-            permission_classes = [permissions.AllowAny]
-        else:
+        if self.action in ['list', 'create']:
             permission_classes = [per.IsStaffOrReadOnly]
+        else:
+            permission_classes = [per.IsAuthorOrReadOnly, per.IsStaffOrReadOnly]
 
         return [permission() for permission in permission_classes]
 
